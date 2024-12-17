@@ -1,0 +1,46 @@
+{% load static %}
+
+<section class="container mx-auto mt-20" id="contact">
+
+<div class="max-w-screen-xl mt-8 mx-auto p-10 shadow-lg shadow-gray-200 rounded-3xl">
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="flex flex-col gap-8 mt-8 p-0  md:p-10 md:flex-row">
+        <div class="w-full flex items-center md:w-1/2 ">
+            <img class="w-full " src="{% static 'images/Contact-us.png' %}" alt="Hero Image">
+        </div>
+        <div class="w-full md:w-1/2">
+            <h2 class="text-2xl font-bold w-full text-primary text-center md:text-start md:text-4xl ">Need a More Personalised Plan?Reach Out to Us!</h2>
+
+            <form class="mt-4" method="post">
+                {% csrf_token %}
+                <div class="mt-3">
+                    <label for="name" class="text-lg font-medium text-gray-500 ">Name<span class="text-red-500 ml-1">*</span></label>
+                    <input id="name" type="text" name="name" class="p-3 w-full text-gray-900 border border-gray-300 rounded-md mt-1" placeholder="john Doe" required/>
+                </div>
+                <div class="mt-4">
+                    <label for="email" class="text-lg font-medium text-gray-500">Email</label>
+                    <input id="email" name="email" type="email" class="p-3 w-full text-gray-900 border border-gray-300 rounded-md mt-1" placeholder="johndue@mail.com"/>
+                </div>
+                <div class="mt-4">
+                    <label for="phone" class="text-lg font-medium text-gray-500">Phone Number<span class="text-red-500 ml-1">*</span>(Don't worry, we won't spam you!)</label>
+                    <input id="phone" name="phone" type="text"  class="p-3 w-full text-gray-900 border border-gray-300 rounded-md mt-1" placeholder="00000 00000" required/>
+                </div>
+                <div class="mt-4">
+                    <label for="message" class="text-lg font-medium text-gray-500">Brief<span class="text-red-500 ml-1">*</span></label>
+                    <textarea id="message" name="message" type="text" class="p-3 w-full h-36 text-gray-900 border border-gray-300 rounded-md mt-1" placeholder="If you’d like us to know something is specific, let us know" required></textarea>
+                </div>
+
+                <button type="submit" class="w-full p-5 bg-secondary text-white font-bold rounded-full mt-10 text-2xl">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+</div>
+</section>

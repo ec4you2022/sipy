@@ -1,0 +1,41 @@
+{% load static %}
+ 
+<section class="bg-primary p-10 mt-20" id="calculator">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-20 max-w-screen-xl mx-auto">
+        <div class="w-full md:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-4">
+            {% comment %} <div class="">
+                <h2 class="text-2xl font-medium leading-6 text-white md:text-4xl ">Check How<br> Much You Save With Us</h2>
+            </div>
+
+            <div class="flex gap-3 flex-col">
+                <input class="w-3/4 p-1.5 rounded-md bg-[#2687e8]"/>
+                <input class="w-3/4 p-1.5 rounded-md bg-[#2687e8]"/>
+                <input class="w-3/4 p-1.5 rounded-md bg-[#2687e8]"/>
+            </div>
+
+            <div class="flex gap-3 flex-col mt-4">
+                <h3 class="text-white text-lg font-semibold">Normal funds</h3>
+                <input class="w-3/4 p-1.5 rounded-md bg-[#2687e8]"/>
+                <input class="w-3/4 p-1.5 rounded-md bg-[#2687e8]"/>
+                <input class="w-3/4 p-1.5 rounded-md bg-[#2687e8]"/>
+            </div>
+
+            <div class="flex gap-3 flex-col mt-4">
+                <h3 class="text-white text-lg font-semibold">with SIPY</h3>
+                <input class="w-3/4 p-1.5 rounded-md bg-[#2687e8]"/>
+                <input class="w-3/4 p-1.5 rounded-md bg-[#2687e8]"/>
+                <input class="w-3/4 p-1.5 rounded-md bg-[#2687e8]"/>
+            </div> {% endcomment %}
+            <h2 class="text-4xl font-bold text-center  leading-10 text-white md:text-4xl md:leading-10 md:text-start ">Check How Much You Save With Us</h2>
+        </div>
+        <div class="w-full flex justify-center md:justify-end md:w-1/2">
+            {% comment %} <div class="bg-blue-500 p-6 flex justify-center items-center h-64">
+                <canvas id="myChart" class="w-full"></canvas>
+            </div> {% endcomment %}
+            <a href="{% static 'images/SIPY_Cost_advantage.xlsx' %}" download><button class="bg-secondary px-8 py-5 text-white font-semibold text-xl rounded-full ">Click Here!</button></a>
+        </div>
+    </div>
+</section>
+
+
+  

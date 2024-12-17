@@ -1,0 +1,73 @@
+{% load static %}
+<!-- Splide CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
+
+<section class="max-w-screen-xl mx-auto mt-20" id="blog">
+    <h2 class="text-center text-3xl font-bold md:text-4xl md:text-start">Want to Learn More?</h2>
+    <p class="text-gray-700 text-base font-normal text-center mt-3 md:text-lg md:text-start">
+        See how we curate the perfect equity portfolio for you in our blog.
+    </p>
+    <div class="splide mt-5" id="blog-carousel">
+        <!-- Splide Track -->
+        <div class="splide__track">
+            <ul class="splide__list">
+                {% for blog in blog %}
+                <li class="splide__slide">
+                    <div class="rounded-xl shadow-lg shadow-slate-200 p-4">
+                        <div class="card-image">
+                            <img class="w-full h-48 rounded-xl" src="{{ blog.image.url }}" alt="{{ blog.title }}" />
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title text-xl font-bold text-start mt-4 hover:text-primary cursor-pointer">
+                                {{ blog.title }}
+                            </h3>
+                            <span class="text-sm text-secondary font-normal text-end md:text-sm md:text-end">By {{ blog.date }}</span>
+                            <p class="card-text text-sm font-normal text-start mt-3 md:text-lg md:text-start">
+                                {{ blog.short_description | truncatewords:10 | safe }}
+                            </p>
+                            <a href="{% url 'index:blog' blog.slug %}" class="text-primary text-sm font-semibold mt-4 hover:text-secondary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Custom Navigation Buttons -->
+        <div class="splide-nav">
+            <button class="splide-prev bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center">
+                &larr;
+            </button>
+            <button class="splide-next bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center">
+                &rarr;
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Splide JS -->
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize Splide
+        const splide = new Splide('#blog-carousel', {
+            type: 'loop',
+            perPage: 3,
+            gap: '1rem',
+            breakpoints: {
+                640: { perPage: 1 },
+                768: { perPage: 2 },
+            },
+            pagination: false,
+            arrows: false, // Disable default arrows
+        });
+
+        splide.mount();
+
+        // Custom Navigation Buttons
+        document.querySelector('.splide-prev').addEventListener('click', () => splide.go('<'));
+        document.querySelector('.splide-next').addEventListener('click', () => splide.go('>'));
+    });
+</script>

@@ -1,0 +1,102 @@
+{% load static %}
+
+<style>
+
+    .investmentChart{
+        width:100px;
+    }
+</style>
+
+<section class=" mt-8 px-3 md:px-0s"> 
+<div class=" max-w-screen-xl mx-auto flex flex-col gap-20 justify-between md:flex-row mt-14">
+    <div class="w-full md:w-1/2 ">
+        <h1 class="text-4xl text-gray-800 leading-snug tracking-wide font-extrabold md:text-5xl"> Low Cost, Low Risk, Personalized<br> Investment Advice</h1>       
+        <h3 class="text-2xl mt-4 tracking-normal font-normal text-secondary md:text-4xl">Made Simple!</h3>    
+        <p class="mt-6 text-base font-base text-gray-500 md:text-lg lg:text-xl ">Say goodbye to high fees and confusing advice. SIPY provides flat-fee,
+            algorithm-powered investment guidance, personalized to your goals.</p> 
+        <button class="bg-secondary  px-7 py-5 text-white mt-10 font-semibold text-base rounded-full md:text-xl ">Start Your Investment Journey Now!</button>
+    </div>
+    <div class="w-full md:w-1/2 border bg-[#f0f6fc] border-primary rounded-3xl items-center pt-16 px-6">
+        <div class="chart-container p-2 md:p-6">
+            <div class="chart-title mb-6">
+                <span class="text-gray-500 font-medium text-base" >Cost of Investment Comparison <br></span>
+                <span class="text-gray-500 font-base text-sm">With SIPY, save 1.15L & Reduce your Stress</span>
+            </div>
+            <canvas id="investmentChart"></canvas>
+            <span class="text-gray-500 font-medium text-base my-5" style="float:right">10K invested monthly for 10 years.</span>
+        </div>
+    </div>
+</div>
+</setion>
+
+<script>
+    let delayed;
+    const ctx = document.getElementById('investmentChart').getContext('2d');
+    const investmentChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Other Funds', 'SIPY Portfolio'],
+            datasets: [{
+                label: 'Returns',
+                data: [200000, 85000], // Adjust data as needed
+                backgroundColor: [
+                    '#67a5e5', // Light blue for Other Funds
+                    '#0d5bac'  // Dark blue for SIPY
+                ],
+                borderWidth: 0,
+                barThickness: 140, // Default bar thickness
+                borderRadius: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    enabled: true
+                }
+            },
+            animation: {
+                onComplete: () => {
+                    delayed = true;
+                },
+                delay: (context) => {
+                    let delay = 0;
+                    if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                        delay = context.dataIndex * 300 + context.datasetIndex * 100;
+                    }
+                    return delay;
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 14,
+                            weight: 'bold'
+                        }
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false // Remove grid lines
+                    },
+                    ticks: {
+                        display: false // Remove tick marks
+                    }
+                }
+            },
+            onResize: function(chart, size) {
+                // Adjust bar thickness based on screen size
+                chart.data.datasets[0].barThickness = size.width >= 1024 ? 140 : 100; // 140 for lg, 100 for md
+                chart.update();
+            }
+        }
+    });
+    </script>
+    

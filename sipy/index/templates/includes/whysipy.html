@@ -1,0 +1,78 @@
+{% load static %}
+
+<section class="mt-20 px-0 w-full bg-[#f0f6fc] pb-64 xl:px-4" id="whysipy">
+    <div class="max-w-screen-xl mt-8 mx-auto p-10">
+        <h2 class="text-center text-3xl font-bold md:text-4xl ">Why Choose SIPY</h2>
+        <p class="text-base text-gray-700 font-normal text-center mt-3 md:text-lg ">A Unique Partner for Smarter & Simpler Investing</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 justify-center align-middle  mt-10 max-w-screen-xl mx-auto ">
+        <div class="flex flex-col items-center gap-4">
+            <div class="icon-div h-20 w-20">
+                <i class="fas fa-lightbulb text-4xl text-primary"></i> 
+            </div>
+            <h3 class="text-center text-2xl font-semibold ">Smart Portfolio Design</h3>
+            <p class="text-sm text-center font-base text-gray-900 md:text-base">Most active funds (77%) fail to beat benchmarks consistently (SPIVA 2024).
+                It’s about sustainable strategies, not fleeting trends. Using a mix of ETFs,
+                Index Funds, and selected active mutual funds, we build you an efficient, goalfocused portfolio.
+            </p>                
+        </div>
+
+        <div class="flex flex-col items-center gap-4">
+            <div class="icon-div h-20 w-20">
+                <i class="fas fa-hand-holding-usd text-4xl text-primary"></i> 
+            </div>
+            <h3 class="text-center text-2xl font-semibold ">Investor Returns Over Investment Returns</h3>
+            <p class="text-sm text-center font-base text-gray-900 md:text-base">We prioritize your goals and low risk, rather than chase returns with unnecessary
+                risk. Grow your wealth in a way that fits your lifestyle.                
+            </p>                
+        </div>
+
+        <div class="flex flex-col items-center gap-4">
+            <div class="icon-div h-20 w-20">
+                <i class="fas fa-pen text-4xl text-primary"></i> 
+            </div>
+            <h3 class="text-center text-2xl font-semibold ">Personalized Guidance</h3>
+            <p class="text-sm text-center font-base text-gray-900 md:text-base">Your investments should reflect your goals, risk tolerance, and your financial
+                milestones. Get a tailored portfolio designed just for you
+            </p>                
+        </div>
+
+        <div class="flex flex-col items-center gap-4">
+            <div class="icon-div h-20 w-20">
+                <i class="fas fa-chart-line text-4xl text-primary"></i> 
+            </div>
+            <h3 class="text-center text-2xl font-semibold ">Maximum Value, Minimum Cost</h3>
+            <p class="text-sm text-center font-base text-gray-900 md:text-base">Flat fees, no commissions—so every rupee works harder for you. We keep your
+                investments affordable, transparent and 100% unbiased.
+            </p>                
+        </div>
+    </div>
+    <h3 class="text-xl font-semibold text-center mt-14 ">And we make it as User-Friendly as Possible!<p>
+
+        <div class="max-w-screen-xl mt-8 mx-4 p-8 bg-white  absolute out-team shadow-lg shadow-slate-200 md:p-10 lg:p-15">
+            <h2 class="text-2xl  font-bold md:text-4xl text-center">Don’t Just Take Our Word for It</h2>
+            <h3 class="text-gray-700 text-base font-normal text-center mt-3 md:text-lg">Listen to what our Investors have to say!</h3>
+            <div class="w-full flex flex-col gap-5 mt-8 md:flex-row justify-center items-center">
+                {% for item in ourteam %}
+                <div class="w-full p-2 md:w-1/2">
+                    <div class="flex flex-row gap-4">
+                        {% if item.image %}
+                            <img class="w-1/4 rounded-full" src="{{ item.image.url }}" alt="Sipy Image">
+                        {% else %}
+                            <div class="text-white w-24 h-24 flex justify-center items-center bg-blue-300 rounded-full">
+                                <h3>{{ item.name|slice:":1" }}</h3>
+                            </div>
+                        {% endif %}
+        
+                        <div class="flex flex-col justify-end">
+                            <h3 class="text-base text-left font-bold text-gray-900 mt-3">-{{ item.name }}</h3>
+                            <p class="text-xs text-left font-normal text-gray-800">{{ item.position }}</p>
+                        </div>
+                    </div>
+                    <h3 class="text-base text-left font-bold text-gray-900 mt-3">{{ item.title }}</h3>
+                    <p class="text-sm mt-2 leading-6 font-medium text-left text-gray-800">{{ item.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+</section>

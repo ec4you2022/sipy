@@ -1,0 +1,164 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sipy{% endblock %}</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&family=Poppins:wght@400;600&family=Darker+Grotesque:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/Style.css' %}">
+    <link href="{% static 'css/Tailwind.css' %}" rel="stylesheet">
+    
+    <style>
+      body{
+        margin:0;
+        padding:0;
+      }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="container mx-auto p-4 mt-7 ">
+
+
+        <nav class="bg-white border-gray-200 ">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
+              <a href="{% url 'index:index' %}" class="flex items-center space-x-3 rtl:space-x-reverse">
+                  <img src="{% static 'images/SIPY_logo.png' %}" class="h-12 mr-3" alt="Sipy Logo">
+              </a>
+              <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
+                  <span class="sr-only">Open main menu</span>
+                  <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                  </svg>
+              </button>
+              <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul class="font-bold font-body text-2xl flex flex-col gap-4 p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:gap-8 md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
+                  <li>
+                    <a href="{% url 'index:index' %}#whysipy" class="block py-2 px-3 text-gray-900 bg-secondary rounded md:bg-transparent md:hover:text-secondary md:p-0 " aria-current="page">Why SIPY</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'index:index' %}#calculator" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0">Calculator</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'index:index' %}#blog" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0">blog</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'index:index' %}#whoweare" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0">Who We Are</a>
+                  </li>
+                  <li class="">
+                    <a href="{% url 'index:index' %}#contact" class="block py-2 px-3 rounded-full text-gray-900  hover:bg-gray-100 md:hover:bg-transparent md:bg-secondary md:hover:bg-primary md:px-10 md:py-1 md:text-white md:w-full md:border-0">Contact</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          
+    </header>
+
+    <!-- Main Content -->
+        {% block content %}
+  
+        {% endblock %}
+
+    <!-- Footer -->
+      <section class="p-2 mt-20 bg-primary md:p-10" >
+        <div
+          class="max-w-screen-xl mx-auto flex p-10 flex-col justify-between md:flex-row pb-10"
+        >
+          <div class="w-full md:w-1/3 md:py-10">
+            <img
+              src="{% static 'images/SIPY Logo-white.png' %}"
+              class="h-24"
+              alt="Flowbite Logo"
+            />
+            <p class="mt-6  text-white text-base">
+              Simplified Investments Personalised for You
+              31/2B, Nagaloothu Street, Kanchipuram, 631501
+              ARN - 190682, Ph- +91-7022411404
+              Mail – hello@sipy.in
+            </p>
+          </div>
+          <div class="w-full flex md:w-1/3 mt-10 flex-col py-2 md:px-10 md:py-10 md:mt-0">
+            <div class="flex flex-row justify-between py-0">
+              <a
+                href="https://www.facebook.com/profile.php?id=61569742269323"
+                target="_blank"
+                style="text-decoration: none"
+              >
+                <i class="fab fa-facebook" style="color: #ffffff; font-size: 40px"></i>
+              </a>
+      
+      
+              <a
+                href="https://www.linkedin.com/company/sipycare"
+                target="_blank"
+                style="text-decoration: none"
+              >
+                <i
+                  class="fab fa-linkedin"
+                  style="color: #ffffff; font-size: 40px"
+                ></i>
+              </a>
+      
+      
+              <a
+                href="https://www.instagram.com/sipycare"
+                target="_blank"
+                style="text-decoration: none"
+              >
+                <i
+                  class="fab fa-instagram"
+                  style="color: #ffffff; font-size: 40px"
+                ></i>
+              </a>
+              <a
+                href="https://x.com/SIPYCARE"
+                target="_blank"
+                style="text-decoration: none"
+              >
+              <img src="{% static 'images/twitter.png' %}" alt="x" style="width: 38px; height: 38px;">
+              
+              </a>
+            </div>
+            <p class="mt-6 text-white text-sm leading-6">
+              Mutual Fund investments are subject to market risks. Please read all
+              scheme related documents carefully before investing. Past performance is
+              not an
+            </p>
+          </div>
+        </div>
+      
+        <div class="">
+          <hr class="my-2 font-bold border-gray-300" />
+          <p class ="mt-5 text-center text-blue-500">&copy; 2024 <a href="https://sipy.in" class="text-gray-200 hover:underline">Sipy.in</a>. Developed by <a href="https://ec4you.in" class="text-gray-200 hover:underline ">ec4you</a>. All rights reserved.</p>
+        </div>
+      </section>
+
+
+    {% block scripts %}
+
+        <script>
+                    // Get references to the menu toggle button and menu list
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuList = document.getElementById('menu-list');
+
+        // Add event listener to toggle the menu visibility
+        menuToggle.addEventListener('click', () => {
+            menuList.classList.toggle('hidden'); // Toggle the 'hidden' class
+        });
+
+        </script>
+
+    {% endblock %}
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+
+</html>

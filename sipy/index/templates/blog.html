@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog{% endblock %}
+
+<style>
+
+</style>
+
+{% block content %}
+
+
+<section class="bg-[#f0f6fc] font-sans leading-relaxed tracking-wide">
+    <div class="max-w-screen-xl mx-auto py-8 px-4 lg:px-8">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-4 lg:gap-8 lg:grid-flow-row-dense">
+            <!-- Sidebar -->
+            <aside class="lg:col-span-1 bg-white shadow-lg rounded-lg p-6 order-last lg:order-first">
+                <h2 class="text-xl font-bold mb-4 border-b pb-2">Latest Blogs</h2>
+                <ul class="space-y-4">
+                    {% for blog in all_blogs %}
+                    <li>
+                        <a href="{% url 'index:blog' blog.slug %}" class="text-primary hover:underline hover:text-secondary">{{ blog.title }}</a>
+                        <p class="text-sm text-gray-500">{{ blog.date }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <h2 class="text-xl font-bold mt-6 mb-4 border-b pb-2">Follow Us</h2>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/profile.php?id=61569742269323" target="_blank" class="text-secondary hover:text-blue-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-6 h-6">
+                            <path d="M8 0C3.582 0 0 3.582 0 8c0 4.015 2.926 7.323 6.751 7.876v-5.572H4.843v-2.304h1.908V6.004c0-1.892 1.137-2.936 2.876-2.936.832 0 1.703.15 1.703.15v1.872h-.96c-.946 0-1.239.588-1.239 1.193v1.444h2.101l-.335 2.304h-1.766v5.572C13.074 15.323 16 12.015 16 8c0-4.418-3.582-8-8-8z"/>
+                        </svg>
+                    </a>
+                    <a href="https://x.com/SIPYCARE" target="_blank" class="text-secondary hover:text-blue-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-6 h-6">
+                            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.141 0-.283-.006-.425A6.684 6.684 0 0 0 16 3.542a6.56 6.56 0 0 1-1.889.518A3.301 3.301 0 0 0 15.555 2a6.573 6.573 0 0 1-2.084.797A3.286 3.286 0 0 0 7.875 4.03a9.325 9.325 0 0 1-6.766-3.429 3.289 3.289 0 0 0 1.016 4.381A3.323 3.323 0 0 1 .64 5.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115c-.211 0-.417-.02-.616-.057a3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045 9.344 9.344 0 0 0 5.026 1.472"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/sipycare" target="_blank" class="text-secondary hover:text-pink-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-6 h-6">
+                            <path d="M8 0C5.33 0 5.048.013 3.837.073 2.63.132 1.843.325 1.283.57.6.85.157 1.243.038 1.862-.127 2.638 0 4.128 0 7.952c0 3.821-.127 5.313.038 6.089.12.619.563 1.012 1.245 1.292.56.245 1.347.438 2.554.497 1.211.06 1.493.073 4.162.073s2.95-.013 4.162-.073c1.207-.059 1.994-.252 2.554-.497.683-.28 1.126-.673 1.245-1.292.165-.776.038-2.268.038-6.089 0-3.824.127-5.313-.038-6.089-.12-.619-.563-1.012-1.245-1.292-.56-.245-1.347-.438-2.554-.497C10.95.013 10.67 0 8 0zm0 1.234c2.637 0 2.91.013 3.935.071.92.054 1.42.227 1.747.379.432.211.743.496.892.891.152.43.325.827.379 1.747.058 1.024.071 1.297.071 3.935s-.013 2.91-.071 3.935c-.054.92-.227 1.42-.379 1.747-.211.432-.496.743-.891.892-.431.152-.828.325-1.748.379-1.024.058-1.297.071-3.935.071s-2.91-.013-3.935-.071c-.92-.054-1.42-.227-1.747-.379-.432-.211-.743-.496-.892-.891-.152-.43-.325-.827-.379-1.747C1.247 10.91 1.234 10.637 1.234 8s.013-2.91.071-3.935c.054-.92.227-1.42.379-1.747.211-.432.496-.743.891-.892.431-.152.828-.325 1.748-.379C5.09 1.247 5.363 1.234 8 1.234z"/>
+                            <path d="M8 3.842a4.158 4.158 0 1 0 0 8.316 4.158 4.158 0 0 0 0-8.316zm0 6.842a2.684 2.684 0 1 1 0-5.368 2.684 2.684 0 0 1 0 5.368z"/>
+                            <circle cx="12.228" cy="3.772" r="1.2"/>
+                        </svg>
+                    </a>
+                    
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="lg:col-span-3 bg-white shadow-md rounded-lg p-6">
+                <h1 class="text-3xl font-bold mb-4">{{ blog.title }}</h1>
+                <p class="text-gray-500 mb-6">Published on {{ blog.date }} | by {{ blog.author }}</p>
+                <img src="{{ blog.image.url }}" alt="Blog Image" class="w-full h-auto rounded-md mb-6">
+                <div class=" space-y-6 blog-content">
+                    {{ blog.description | safe }}
+                </div>
+            </main>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
